@@ -21,13 +21,13 @@ public class StudentController {
 	
 	//http://:127.0.0.1:8080/student/findAllStudent
 	@GetMapping("findAllStudent")
-	public List<Student> findAllStudent(){
+	public MsgResponse findAllStudent(){
 		try{
 		List<Student> list = studentService.findAll();
-		return list;
+		return MsgResponse.success("查找成功！", list);
 		}catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return MsgResponse.error(e.getMessage());
 		}		
 	}
 	@GetMapping("findById")

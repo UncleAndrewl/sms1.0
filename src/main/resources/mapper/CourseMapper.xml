@@ -6,4 +6,16 @@
 <select id="findAll" resultType="com.briup.app02.bean.Course">
     select * from tbl_Course
   </select>
+  <select id="findById" parameterType="long" resultType="com.briup.app02.bean.Course">
+    select * from tbl_Course where id=#{id}
+  </select>
+  <delete id="deleteById" parameterType="long">
+  delete from tbl_Course where id =#{id}
+  </delete>
+  <update id="updateCourse" parameterType="com.briup.app02.bean.Course" >
+  update tbl_Course set name = #{name},credit = #{credit},description = #{description} where id = #{id}
+  </update> 
+  <insert id="insertCourse" parameterType="com.briup.app02.bean.Course">
+  insert into tbl_Course values(#{id},#{name},#{credit},#{description})
+  </insert>
 </mapper>
